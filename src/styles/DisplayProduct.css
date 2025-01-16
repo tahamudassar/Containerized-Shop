@@ -1,0 +1,93 @@
+/* src/components/DisplayPosts.css */
+
+/* Container for all posts */
+.posts-container {
+    text-align: center;
+    margin-top: 20px;
+}
+
+/* Grid container to hold all post cards */
+.posts-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+    justify-items: center;
+    margin-top: 20px;
+}
+
+/* Styling individual post card */
+.post-card {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    width: 100%;
+    max-width: 300px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+}
+
+/* Hover effect on card */
+.post-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Title and question styling */
+.post-title {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin: 15px;
+    color: #333;
+}
+
+.post-question {
+    font-size: 1rem;
+    margin: 0 15px 15px 15px;
+    color: #666;
+}
+
+.post-description {
+    font-size: 1rem;
+    margin: 0 15px 15px 15px;
+    color: #666;
+    max-height: 60px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* Price styling */
+.post-price {
+    font-size: 1.2rem;
+    color: #27ae60;
+    font-weight: bold;
+    margin: 0 15px 20px 15px;
+}
+
+/* Add to Cart button styling */
+.add-to-cart-btn {
+    background-color: #3498db;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 90%;
+    margin: 0 15px 15px 15px;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+    margin-top: auto;
+}
+
+/* Hover effect on button */
+.add-to-cart-btn:hover {
+    background-color: #2980b9;
+}
+
+.product-image {
+    height: 150px;
+    width: auto;
+}

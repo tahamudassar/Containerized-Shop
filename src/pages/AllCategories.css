@@ -1,0 +1,23 @@
+.categories-container {
+    padding: 20px;
+    font-family: Arial, sans-serif;
+}
+
+.categories-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+.category-item {
+    margin: 10px 0;
+}
+
+.category-item a {
+    text-decoration: none;
+    color: #007BFF;
+    font-size: 18px;
+}
+
+.category-item a:hover {
+    text-decoration: underline;
+}

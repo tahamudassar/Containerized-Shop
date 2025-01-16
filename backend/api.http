@@ -1,0 +1,138 @@
+
+### login
+POST http://localhost:8000/api/token/ HTTP/1.1
+Content-Type: application/json
+
+{
+	"email": "temps@temp.com",
+	"password": "123456789012"
+}
+
+###
+POST http://localhost:8000/api/token/refresh/ HTTP/1.1
+Content-Type: application/json
+
+{
+	"refresh": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTczMTc4MzQ2NCwiaWF0IjoxNzMxNjk3MDY0LCJqdGkiOiIwOGNhNWRhZTk3YjU0ODljOTVlYzUyNTI3YWUyN2E0ZCIsInVzZXJfaWQiOjF9.y1nv9u6sFwAAkEyLH6zMo-WMSCMlamZIPVM1Y1GQYlo"
+}
+
+###register user
+POST http://localhost:8000/api/register/ HTTP/1.1
+Content-Type: application/json
+
+{
+    "email": "tempssaasss@temp.com",
+    "username": "abuuasdu",
+    "password": "123456789012"
+}
+
+###
+GET http://localhost:8000/api/posts/study/ HTTP/1.1
+
+###
+GET http://localhost:8000/api/posts/carpool/ HTTP/1.1
+
+###
+GET http://localhost:8000/api/posts/blood-donation/ HTTP/1.1
+
+###
+GET http://localhost:8000/api/posts/latest/ HTTP/1.1
+
+###
+POST http://localhost:8000/api/createStudyPost/ HTTP/1.1
+Content-Type: application/json
+
+{
+    "community": "Study Guide",
+    "studytitle": "Calculus 101",
+    "studyquestion": "What is the derivative of sin(x)?",
+    "questionlink": "http://math.com/problem1",
+    "questionimage": "http://math.com/images/problem1.jpg"
+}
+
+
+###
+POST http://localhost:8000/api/createComment/ HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzMyNTcyNjkzLCJpYXQiOjE3MzI1NjU0OTMsImp0aSI6IjM2MGQ5MDQ2NDhiMDRiYWU4NzRlOTFjYWEyNWRjMTk1IiwidXNlcl9pZCI6Nn0.FmW_buQaF_buemzVW1Z3o1UFgO3oamhAIDA-LE4GRXE
+
+{
+    "post": 1,
+    "content": "This is a test."
+}
+
+###
+POST http://localhost:8000/api/createLike/ HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzMyNTY3OTIxLCJpYXQiOjE3MzI1NjA3MjEsImp0aSI6IjBhYTAwMjYzN2E5NjRkNjk4MDQ2ZGExZTA4ZDgzNmZiIiwidXNlcl9pZCI6N30.Q5jPbaUpUtElbDEmpv5Po9YpYKgMBgxyyI5dwGUDAeQ
+
+{
+    "post_id": 14
+}
+
+
+###
+POST http://localhost:8000/api/createShare/ HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzMyNTczMzY2LCJpYXQiOjE3MzI1NjYxNjYsImp0aSI6IjhhZTYxNGMxOWNkOTRkOTRiN2QwYjU0ODlmYzU0Y2YyIiwidXNlcl9pZCI6Nn0.Q02dC-RwDdDMd6uVR_RHZSSuV6O0rD5-g6Rf3-LAoKA
+
+{
+    "post_id": 12,
+    "content": "This is a test share."
+}
+
+###
+POST http://localhost:8000/api/passwordReset/ HTTP/1.1
+Content-Type: application/json
+
+{
+    "email": "sdaproj@outlook.com"
+}
+
+
+###
+POST http://localhost:8000/api/passwordResetConfirm/ch7zoi-19c5a367328ae8f1c299db6bd6058b9c/ HTTP/1.1
+Content-Type: application/json
+
+{
+    "new_password": "new1234567890"
+}
+
+POST http://localhost:8000/api/updateProfile/email/ HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer <your_auth_token>
+
+{
+    "new_email": "newemail@example.com"
+}
+
+###
+POST http://localhost:8000/api/updateProfile/username/ HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzMyODkzNDYzLCJpYXQiOjE3MzI4ODYyNjMsImp0aSI6IjA4NTYwNThmNDQ1MjQ4N2NiZDI4NzIzNDA4NmI3Y2FlIiwidXNlcl9pZCI6MTR9.py91s4np8AjLKQaSipYmS3e_42G-91rZl9vNXUin-a4
+{
+    "username": "lmaoxd"
+}
+
+### add comment
+POST http://localhost:8000/api/createComment/ HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90e…6MTR9.4StPc_3FUudyJyBEQNyxiiHaNEOSdXXEYIVqMUJ0Pek
+{
+    "content": "This is totally a test comment23.",
+    "post": 18
+}
+
+### fetch comments
+GET http://localhost:8000/api/fetchComments/18/ HTTP/1.1
+
+### checkIfAuthed
+POST http://localhost:8000/api/auth-check/ HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzM2NTE1Nzc2LCJpYXQiOjE3MzY1MDg1NzYsImp0aSI6ImUxZWFiYjU3NjZkNjQ1NDc5NTRkMzZlMzUwYTc1NWZkIiwidXNlcl9pZCI6MTR9._mnCNgCh9yvRsylZJJwZISlV6GNdKjAEk8Dg8ZTkCB8
+{
+
+}
+
+###fetch user
+GET http://localhost:8000/api/user/50/ HTTP/1.1

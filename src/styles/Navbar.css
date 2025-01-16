@@ -1,0 +1,136 @@
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 20px;
+    background-color: #333;
+}
+
+.navbar-logo {
+    display: flex;
+    align-items: center;
+}
+
+.navbar-logo img {
+    height: 50px; /* Adjust the height */
+    width: auto;  /* Maintain aspect ratio */
+}
+
+.navbar-logo h1 {
+    margin: 0;
+    color: white;
+    margin-left: 10px;
+}
+
+.navbar-links {
+    list-style-type: none;
+    display: flex;
+    gap: 15px;
+    margin: 0;
+}
+
+.navbar-links li {
+    display: inline;
+}
+
+.navbar-links a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+}
+
+.navbar-links a:hover {
+    text-decoration: underline;
+}
+
+.navbar-search {
+    flex-grow: 1;
+    margin: 0 20px;
+}
+
+.navbar-search input {
+    width: 100%;
+    padding: 8px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+.navbar-button {
+    padding: 2px 4px; /* Reduced padding to make the button less wide */
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.navbar-button.logout {
+    background-color: #dc3545;
+}
+
+.navbar-button:hover {
+    background-color: #0056b3;
+}
+
+.navbar-button.logout:hover {
+    background-color: #c82333;
+}
+
+.navbar-dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.navbar-dropbtn {
+    padding: 8px 15px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.navbar-dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.navbar-dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.navbar-dropdown-content a:hover {
+    background-color: #f1f1f1;
+}
+
+.navbar-dropdown-content button {
+    color: black;
+    padding: 10px 20px;
+    text-decoration: none;
+    display: block;
+    border: none;
+    background: none;
+    width: 100%;
+    text-align: left;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.navbar-dropdown-content button:hover {
+    background-color: #f1f1f1;
+}
+
+.navbar-dropdown:hover .navbar-dropdown-content {
+    display: block;
+}
+
+.navbar-dropdown:hover .navbar-dropbtn {
+    background-color: #0056b3;
+}
