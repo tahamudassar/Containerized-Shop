@@ -14,8 +14,11 @@ const cartSlice = createSlice({
     addToCart: (state, action) => {
       state.items.push(action.payload); // Add new item directly to the items array
       state.itemCount += 1; // Increment item count
-      state.total = parseFloat((state.total + action.payload.price).toFixed(2)); // Add item price to total and round to 2 decimal places
-        },
+      state.total = state.total+action.payload.price // Add item price to total and round to 2 decimal places
+      // console.log("add",state.total);
+      // console.log("item count",state.itemCount);
+
+    },
 
     removeFromCart: (state, action) => {
       const { id, forceZeroQuantity } = action.payload; // Destructure id and forceZeroQuantity from the payload
@@ -35,7 +38,7 @@ const cartSlice = createSlice({
       if (state.itemCount < 0) {
         state.itemCount = 0; // Prevent negative item count
       }
-        },
+    },
 
     resetCart: (state) => {
       state.items = [];
@@ -47,12 +50,14 @@ const cartSlice = createSlice({
       const index = state.items.findIndex(item => item.id === action.payload.id);
       if (index !== -1) {
         state.total = parseFloat((state.total - state.items[index].price).toFixed(2)); // Subtract item price from total and round to 2 decimal places
-        state.items.splice(index, 1); // Remove one instance of the item with the given id
+        state.items = state.items.filter((_, i) => i !== index); // Remove one instance of the item with the given id
         state.itemCount -= 1; // Decrement item count
         if (state.itemCount < 0) {
           state.itemCount = 0; // Prevent negative item count
         }
       }
+      // console.log("decrease",state.total);
+      // console.log("item count",state.itemCount);
     },
   },
 });

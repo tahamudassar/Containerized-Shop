@@ -1,11 +1,11 @@
 import React from 'react';
 
-const CartItemButtons = ({ itemId, onIncrease, onDecrease, onRemove }) => {
+const CartItemButtons = ({ item, onIncrease, onDecrease, onRemove }) => {
   return (
     <div className="cart-item-buttons">
-      <button onClick={() => onIncrease(itemId)}>+</button>
-      <button onClick={() => onDecrease(itemId)}>-</button>
-      <button onClick={() => onRemove(itemId)}>Remove</button>
+      <button onClick={() => onIncrease(item)}>+</button>
+      <button onClick={() => onDecrease(item)}>-</button>
+      <button onClick={() => onRemove(item)}>Remove</button>
     </div>
   );
 };

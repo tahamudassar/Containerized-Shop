@@ -3,25 +3,27 @@ import { useSelector, useDispatch } from 'react-redux';
 import { resetCart, removeFromCart, decreaseQuantity, addToCart } from '../../store/slices/cartSlice';
 import '../../styles/Sidebar.css';
 import CartItemButtons from './CartItemButtons';
+import { useNavigate } from 'react-router-dom';
 
 const Sidebar = ({ isOpen, toggleSidebar }) => {
   const cartItems = useSelector((state) => state.cart.items);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const handleClearCart = () => {
     dispatch(resetCart());
   };
 
-  const handleRemoveItem = (id) => {
-    dispatch(removeFromCart({ id, forceZeroQuantity: true }));
+  const handleRemoveItem = (item) => {
+    dispatch(removeFromCart({ id: item.id, forceZeroQuantity: true }));
   };
 
-  const handleIncreaseQuantity = (id) => {
-    dispatch(addToCart({ id }));
+  const handleIncreaseQuantity = (item) => {
+    dispatch(addToCart(item));
   };
 
-  const handleDecreaseQuantity = (id) => {
-    dispatch(decreaseQuantity({ id }));
+  const handleDecreaseQuantity = (item) => {
+    dispatch(decreaseQuantity({ id: item.id }));
   };
 
   const groupedItems = cartItems.reduce((acc, item) => {
@@ -42,7 +44,7 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
               <img src={item.thumbnail} alt={item.name} style={{ width: '50px', height: '50px' }} />
               <span>{item.main_topic} - {item.quantity} x ${item.price}</span>
               <CartItemButtons
-                itemId={item.id}
+                item={item}
                 onIncrease={handleIncreaseQuantity}
                 onDecrease={handleDecreaseQuantity}
                 onRemove={handleRemoveItem}
@@ -55,7 +57,7 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
       )}
 
       <div className="sidebar-buttons">
-        <button className="close-sidebar">Checkout</button>
+        <button className="close-sidebar" onClick={() => navigate('checkout')}>Checkout</button>
         <button className="close-sidebar" onClick={handleClearCart}>Clear Cart</button>
         <button className="close-sidebar" onClick={toggleSidebar}>Close</button>
       </div>

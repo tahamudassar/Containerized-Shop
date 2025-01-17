@@ -17,7 +17,7 @@ export default function FullCartView() {
     }, []);
 
     const handleAddToCart = (post) => {
-        console.log('Adding to cart:', post);
+        // console.log('Adding to cart:', post);
         dispatch(addToCart(post)); // Dispatch the action to add item to the cart
     };
 
