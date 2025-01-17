@@ -1,0 +1,32 @@
+//error after doing persistent storage
+
+
+store.js:24 A non-serializable value was detected in an action, in the path: `register`. Value: ƒ register(key) {
+    _pStore.dispatch({
+      type: _constants__WEBPACK_IMPORTED_MODULE_0__.REGISTER,
+      key: key
+    });
+  } 
+Take a look at the logic that dispatched this action:  Object 
+(See https://redux.js.org/faq/actions#why-should-type-be-a-string-or-at-least-serializable-why-should-my-action-types-be-constants) 
+(To allow non-serializable values see: https://redux-toolkit.js.org/usage/usage-guide#working-with-non-serializable-data)
+overrideMethod @ hook.js:608
+(anonymous) @ serializableStateInvariantMiddleware.ts:179
+measureTime @ utils.ts:8
+(anonymous) @ serializableStateInvariantMiddleware.ts:172
+(anonymous) @ redux-thunk.mjs:7
+(anonymous) @ immutableStateInvariantMiddleware.ts:174
+(anonymous) @ actionCreatorInvariantMiddleware.ts:29
+persist @ persistStore.js:114
+persistStore @ persistStore.js:123
+./src/store/store.js @ store.js:24
+options.factory @ react refresh:6
+__webpack_require__ @ bootstrap:22
+fn @ hot module replacement:61
+./src/index.js @ Sidebar.js:68
+options.factory @ react refresh:6
+__webpack_require__ @ bootstrap:22
+(anonymous) @ startup:7
+(anonymous) @ startup:7
+Show 9 more frames
+Show less
