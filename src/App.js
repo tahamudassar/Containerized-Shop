@@ -18,6 +18,7 @@ import axios from 'axios';
 import AdminForm from './pages/AdminForm'; // Import AdminForm component
 import './styles/AdminForm.css'; // Import the CSS file for styling
 import ProtectedRoute from './components/common/ProtectedRoute'; // Import ProtectedRoute component
+import SearchPage from './pages/SearchPage'; // Import SearchPage component
 
 export const axiosInstance = axios.create({
   baseURL: 'https://api.example.com',
@@ -60,6 +61,7 @@ const App = () => {
           <Route path="/product/:productId" element={<ProductDetailPage />} />
           <Route path="/all-categories" element={<AllCategories />} />
           <Route path="/checkout" element={<CheckOut />} />
+          <Route path="/search" element={<SearchPage />} />
           <Route
             path="/admin"
             element={

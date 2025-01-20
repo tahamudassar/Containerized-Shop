@@ -50,6 +50,8 @@
 .navbar-search {
     flex-grow: 1;
     margin: 0 20px;
+    display: flex;
+    align-items: center; /* Ensure items are aligned in the center */
 }
 
 .navbar-search input {
@@ -59,8 +61,23 @@
     border: 1px solid #ccc;
 }
 
+.navbar-search button {
+    padding: 8px 15px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-left: 10px;
+    height: 100%; /* Ensure the button height matches the input height */
+}
+
+.navbar-search button:hover {
+    background-color: #0056b3;
+}
+
 .navbar-button {
-    padding: 2px 4px; /* Reduced padding to make the button less wide */
+    padding: 8px 15px;
     background-color: #007bff;
     color: white;
     border: none;

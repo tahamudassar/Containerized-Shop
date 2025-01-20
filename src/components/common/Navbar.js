@@ -64,7 +64,7 @@ const Navbar = ({ toggleSidebar, handleLogout }) => {
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
           />
-          <button type="submit">Search</button>
+          {/* <button type="submit">Search</button> */}
         </form>
       </div>
       <button className="navbar-button" onClick={toggleSidebar}>
