@@ -14,10 +14,7 @@ const cartSlice = createSlice({
     addToCart: (state, action) => {
       state.items.push(action.payload); // Add new item directly to the items array
       state.itemCount += 1; // Increment item count
-      state.total = state.total+action.payload.price // Add item price to total and round to 2 decimal places
-      // console.log("add",state.total);
-      // console.log("item count",state.itemCount);
-
+      state.total = parseFloat((state.total + action.payload.price).toFixed(2)); // Add item price to total and round to 2 decimal places
     },
 
     removeFromCart: (state, action) => {
@@ -56,8 +53,6 @@ const cartSlice = createSlice({
           state.itemCount = 0; // Prevent negative item count
         }
       }
-      // console.log("decrease",state.total);
-      // console.log("item count",state.itemCount);
     },
   },
 });

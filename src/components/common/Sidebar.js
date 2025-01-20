@@ -42,7 +42,7 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
           {itemsArray.map((item, index) => (
             <li key={index} className="cart-item">
               <img src={item.thumbnail} alt={item.name} style={{ width: '50px', height: '50px' }} />
-              <span>{item.main_topic} - {item.quantity} x ${item.price}</span>
+              <span>{item.main_topic}  {item.quantity} x ${item.price}</span>
               <CartItemButtons
                 item={item}
                 onIncrease={handleIncreaseQuantity}

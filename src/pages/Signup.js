@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import '../styles/Signup.css'; // Import the CSS file for styling
 // import { BrowserRouter, useNavigate } from 'react-router-dom';
 
 export default function Form() {
@@ -62,7 +63,7 @@ export default function Form() {
     // }
     return (
 
-            <div>
+            <div className="signup-container"> {/* Add the class here */}
                 <h2>Register</h2>
                 <form onSubmit={handleSubmit}>
                     {Object.keys(formData).map((key) => (

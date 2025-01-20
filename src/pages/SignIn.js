@@ -31,12 +31,8 @@ export default function SignIn () {
             if (response.status === 200) {
                 const data = await response.json(); // Parse the server response if needed
                 setResponse('login successful!');
-                console.log('Success:', data);
-                //saving to local storage
-                localStorage.setItem('Accesstoken', response.access);
-
-                console.log('Accesstoken:', response.access);
-                
+                localStorage.setItem('Accesstoken', data.access);
+                window.location.reload(); // Re-render the navbar by reloading the page
             } else {
                 const errorData = await response.json();
                 setResponse(`Failed: ${errorData.message || 'Unknown error'}`);

@@ -6,6 +6,7 @@ import MainLogo from '../../assets/logo.png'; // Import the logo image
 
 const Navbar = ({ toggleSidebar, handleLogout }) => {
   const [categories, setCategories] = useState([]);
+  const [searchQuery, setSearchQuery] = useState('');
   const cartItems = useSelector((state) => state.cart); // Access cart items from Redux store
   const navigate = useNavigate();
 
@@ -14,6 +15,13 @@ const Navbar = ({ toggleSidebar, handleLogout }) => {
       .then(res => res.json())
       .then(data => setCategories(data));
   }, []);
+
+  const handleSearch = (event) => {
+    event.preventDefault();
+    if (searchQuery.trim()) {
+      navigate(`/search?query=${searchQuery}`);
+    }
+  };
 
   return (
     <nav className="navbar">
@@ -39,9 +47,6 @@ const Navbar = ({ toggleSidebar, handleLogout }) => {
           <Link to="/create-accountss">Create Account</Link>
         </li>
         <li>
-          <Link to="/fetch-user-data">Fetch User Data</Link>
-        </li>
-        <li>
           <Link to="/SignIn">Sign In</Link>
         </li>
         <li>
@@ -52,14 +57,27 @@ const Navbar = ({ toggleSidebar, handleLogout }) => {
         </li>
       </ul>
       <div className="navbar-search">
-        <input type="text" placeholder="Search..." />
+        <form onSubmit={handleSearch}>
+          <input
+            type="text"
+            placeholder="Search..."
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+          />
+          <button type="submit">Search</button>
+        </form>
       </div>
       <button className="navbar-button" onClick={toggleSidebar}>
         Cart ({cartItems.itemCount})
       </button>
-      <button className="navbar-button logout" onClick={handleLogout}>
-        Logout
-      </button>
+      {localStorage.getItem('Accesstoken') ? (
+        <button className="navbar-button logout" onClick={() => {
+          handleLogout();
+          navigate('/');
+        }}>
+          Logout
+        </button>
+      ) : null}
     </nav>
   );
 };

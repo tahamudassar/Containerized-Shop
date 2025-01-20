@@ -653,4 +653,12 @@ class UserPostsView(APIView):
 # class IsUserAuthed(APIView):
 #     permission_classes = [IsAuthenticated]
 #     def get(self, request):
-#         return Response({"message": "User is authenticated."}, status=status.HTTP_200_OK)   
+#         return Response({"message": "User is authenticated."}, status=status.HTTP_200_OK)
+
+from rest_framework.permissions import IsAuthenticated
+
+class IsUserAuthenticated(APIView):
+    permission_classes = [IsAuthenticated]
+
+    def get(self, request):
+        return Response({"authenticated": True}, status=status.HTTP_200_OK)

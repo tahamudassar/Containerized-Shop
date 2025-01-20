@@ -15,6 +15,9 @@ import ProductDetailPage from './pages/ProductDetailPage';
 import './styles/App.css';
 import CheckOut from './pages/CheckOut';
 import axios from 'axios';
+import AdminForm from './pages/AdminForm'; // Import AdminForm component
+import './styles/AdminForm.css'; // Import the CSS file for styling
+import ProtectedRoute from './components/common/ProtectedRoute'; // Import ProtectedRoute component
 
 export const axiosInstance = axios.create({
   baseURL: 'https://api.example.com',
@@ -29,7 +32,7 @@ const App = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
-  const cartItems = useSelector((state) => state.cart); // Cart items from Redux store
+  // const cartItems = useSelector((state) => state.cart); // Cart items from Redux store
 
   const handleLogout = () => {
     localStorage.removeItem('Accesstoken');
@@ -55,8 +58,16 @@ const App = () => {
           <Route path="/FullCartView" element={<FullCartView />} />
           <Route path="/category/:category" element={<CategoryDisplay />} />
           <Route path="/product/:productId" element={<ProductDetailPage />} />
-          <Route path="/all-categories" element={<AllCategories/>} />
-          <Route path = "/checkout" element = {<CheckOut/>} />
+          <Route path="/all-categories" element={<AllCategories />} />
+          <Route path="/checkout" element={<CheckOut />} />
+          <Route
+            path="/admin"
+            element={
+              <ProtectedRoute>
+                <AdminForm />
+              </ProtectedRoute>
+            }
+          />
           <Route
             path="/ProtectedPage"
             element={
