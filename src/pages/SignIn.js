@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
-// import { BrowserRouter, useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import { setLoggedIn } from '../store/slices/cartSlice'; // Import setLoggedIn action
 
 export default function SignIn () {
     const [formData, setFormData] = useState({
@@ -7,7 +9,9 @@ export default function SignIn () {
         password: '',
     });
     const [response, setResponse] = useState(null); // Store server response status or messages
-    // const navigation=useNavigate();
+    const dispatch = useDispatch(); // Initialize dispatch
+    const navigate = useNavigate(); // Initialize navigate
+
     const handleChange = (event) => {
         const { name, value } = event.target;
         setFormData((prevState) => ({
@@ -19,7 +23,6 @@ export default function SignIn () {
     const handleSubmit = async (event) => {
         event.preventDefault();
         try {
-
             const response = await fetch('http://localhost:8000/api/token/', {
                 method: 'POST',
                 headers: {
@@ -27,12 +30,15 @@ export default function SignIn () {
                 },
                 body: JSON.stringify(formData)
             });
-            console.log(response);
+            // console.log(response);
             if (response.status === 200) {
                 const data = await response.json(); // Parse the server response if needed
                 setResponse('login successful!');
                 localStorage.setItem('Accesstoken', data.access);
-                window.location.reload(); // Re-render the navbar by reloading the page
+                // console.log('Success:', data);
+                dispatch(setLoggedIn(true)); // Set loggedIn to true
+                
+                navigate('/'); // Redirect to homepage
             } else {
                 const errorData = await response.json();
                 setResponse(`Failed: ${errorData.message || 'Unknown error'}`);
@@ -43,34 +49,30 @@ export default function SignIn () {
             console.error('Error:', error);
         }
     };
-    // const handleResrtPwdRedirect = () => {
-    //     navigation('./Resetpassword');
-    // }
+
     return (
-
-            <div>
-                <h2>Sign In</h2>
-                <form onSubmit={handleSubmit}>
-                    {Object.keys(formData).map((key) => (
-                        <div key={key}>
-                            <label htmlFor={key}>{key.charAt(0).toUpperCase() + key.slice(1)}</label>
-                            <input
-                                id={key}
-                                name={key}
-                                type={key.includes('password') ? 'password' : 'text'} // Use password type for password fields
-                                placeholder={key.charAt(0).toUpperCase() + key.slice(1)}
-                                value={formData[key]}
-                                onChange={handleChange}
-                            />
-                        </div>
-                    ))}
-                    <div>
-                        <button type="submit">Log In</button>
+        <div>
+            <h2>Sign In</h2>
+            <form onSubmit={handleSubmit}>
+                {Object.keys(formData).map((key) => (
+                    <div key={key}>
+                        <label htmlFor={key}>{key.charAt(0).toUpperCase() + key.slice(1)}</label>
+                        <input
+                            id={key}
+                            name={key}
+                            type={key.includes('password') ? 'password' : 'text'} // Use password type for password fields
+                            placeholder={key.charAt(0).toUpperCase() + key.slice(1)}
+                            value={formData[key]}
+                            onChange={handleChange}
+                        />
                     </div>
-                </form>
+                ))}
+                <div>
+                    <button type="submit">Log In</button>
+                </div>
+            </form>
 
-                {response && <p>{response}</p>} {/* Display server or validation messages */}
-                {/* <button onClick={handleResrtPwdRedirect}>Forgot password?</button> */}
-            </div>
+            {response && <p>{response}</p>} {/* Display server or validation messages */}
+        </div>
     );
 }

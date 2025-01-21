@@ -8,6 +8,9 @@ const Navbar = ({ toggleSidebar, handleLogout }) => {
   const [categories, setCategories] = useState([]);
   const [searchQuery, setSearchQuery] = useState('');
   const cartItems = useSelector((state) => state.cart); // Access cart items from Redux store
+  var loggedIn = false
+  loggedIn = useSelector((state) => state.cart.loggedIn); // Access loggedIn state from Redux store
+  console.log("this is ;pgged in",loggedIn);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -43,12 +46,16 @@ const Navbar = ({ toggleSidebar, handleLogout }) => {
         <li>
           <Link to="/">Home</Link>
         </li>
-        <li>
-          <Link to="/create-accountss">Create Account</Link>
-        </li>
-        <li>
-          <Link to="/SignIn">Sign In</Link>
-        </li>
+        {!loggedIn && (
+          <>
+            <li>
+              <Link to="/create-account">Create Account</Link>
+            </li>
+            <li>
+              <Link to="/signin">Sign In</Link>
+            </li>
+          </>
+        )}
         <li>
           <Link to="/ProtectedPage">Protected Page</Link>
         </li>
@@ -70,7 +77,7 @@ const Navbar = ({ toggleSidebar, handleLogout }) => {
       <button className="navbar-button" onClick={toggleSidebar}>
         Cart ({cartItems.itemCount})
       </button>
-      {localStorage.getItem('Accesstoken') ? (
+      {loggedIn ? (
         <button className="navbar-button logout" onClick={() => {
           handleLogout();
           navigate('/');

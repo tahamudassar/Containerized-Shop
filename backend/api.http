@@ -23,8 +23,8 @@ POST http://localhost:8000/api/register/ HTTP/1.1
 Content-Type: application/json
 
 {
-    "email": "tempssaasss@temp.com",
-    "username": "abuuasdu",
+    "email": "temps@temp.com",
+    "username": "abuuasdasau",
     "password": "123456789012"
 }
 

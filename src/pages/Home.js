@@ -3,7 +3,8 @@ import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { addToCart } from '../store/slices/cartSlice';
 import DisplayProduct from '../components/DisplayProduct'; // Import DisplayProduct component
-
+// import AddtoCartPopUp from '../utils/AddtoCartPopUp';
+import AddToCartPopUp from '../components/common/AddToCartPopUp'; // Import AddtoCartPopUp component
 export default function FullCartView() {
     const [posts, setPosts] = useState([]);
     const cartItems = useSelector(state => state.cart.items); // Access cart items from Redux store
@@ -19,11 +20,14 @@ export default function FullCartView() {
     const handleAddToCart = (post) => {
         // console.log('Adding to cart:', post);
         dispatch(addToCart(post)); // Dispatch the action to add item to the cart
+        // AddtoCartPopUp();
+        <AddToCartPopUp />;
     };
 
     return (
         <div>
             <DisplayProduct posts={posts} onAddToCart={handleAddToCart} />
+            {/* <AddtoCartPopUp /> */}
         </div>
     );
 }

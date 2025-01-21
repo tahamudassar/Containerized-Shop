@@ -7,6 +7,9 @@ import { Provider } from 'react-redux';
 import { createRoot } from 'react-dom/client';
 import { PersistGate } from 'redux-persist/integration/react';
 
+// Clear local storage before creating the Redux store
+localStorage.clear();
+
 const container = document.getElementById('root');
 const root = createRoot(container);
 

@@ -20,7 +20,7 @@ export const checkUserAuthenticated = async () => {
         } else {
             if (response.status === 401) {
                 // Token is invalid or expired
-                // localStorage.removeItem('Accesstoken');
+                localStorage.removeItem('Accesstoken');
             }
             return false;
         }

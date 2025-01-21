@@ -39,7 +39,7 @@ const CheckOut = () => {
                         {itemsArray.map(item => (
                             <li key={item.id} className="checkout-item">
                                 <img src={item.thumbnail} alt={item.name} style={{ width: '50px', height: '50px' }} />
-                                <span>{item.name} - {item.quantity} x ${item.price}</span>
+                                <span>{item.name}  {item.quantity} x ${item.price}</span>
                                 <div className="checkout-item-buttons">
                                     <button onClick={() => handleDecreaseQuantity(item)}>-</button>
                                     <button onClick={() => handleIncreaseQuantity(item)}>+</button>

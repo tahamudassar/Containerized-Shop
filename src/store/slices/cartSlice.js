@@ -5,6 +5,7 @@ const initialState = {
   items: [], // Array to hold items added to the cart
   itemCount: 0,
   total: 0, // Add total property to the initial state
+  loggedIn: false, // Add loggedIn property to the initial state
 };
 
 const cartSlice = createSlice({
@@ -54,11 +55,16 @@ const cartSlice = createSlice({
         }
       }
     },
+    setLoggedIn: (state, action) => {
+      // console.log("this is logged in",state.loggedIn);
+
+      state.loggedIn = action.payload; // Set loggedIn state
+    },
   },
 });
 
 // Export actions
-export const { addToCart, removeFromCart, resetCart, decreaseQuantity } = cartSlice.actions;
+export const { addToCart, removeFromCart, resetCart, decreaseQuantity, setLoggedIn } = cartSlice.actions;
 
 // Export the reducer
 export default cartSlice.reducer;

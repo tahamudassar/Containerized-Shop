@@ -19,7 +19,8 @@ import AdminForm from './pages/AdminForm'; // Import AdminForm component
 import './styles/AdminForm.css'; // Import the CSS file for styling
 import ProtectedRoute from './components/common/ProtectedRoute'; // Import ProtectedRoute component
 import SearchPage from './pages/SearchPage'; // Import SearchPage component
-
+import { setLoggedIn } from './store/slices/cartSlice';
+import { useDispatch } from 'react-redux';
 export const axiosInstance = axios.create({
   baseURL: 'https://api.example.com',
   timeout: 5000,
@@ -32,11 +33,12 @@ export const axiosInstance = axios.create({
 const App = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
-
+  const dispatch = useDispatch();
   // const cartItems = useSelector((state) => state.cart); // Cart items from Redux store
 
   const handleLogout = () => {
     localStorage.removeItem('Accesstoken');
+    dispatch(setLoggedIn(false));
     setIsAuthenticated(false);
   };
 
@@ -54,7 +56,7 @@ const App = () => {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/fetch-user-data" element={<FetchUserData />} />
-          <Route path="/create-accountss" element={<SignUp />} />
+          <Route path="/create-account" element={<SignUp />} />
           <Route path="/SignIn" element={<SignIn />} />
           <Route path="/FullCartView" element={<FullCartView />} />
           <Route path="/category/:category" element={<CategoryDisplay />} />
