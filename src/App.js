@@ -21,6 +21,13 @@ import ProtectedRoute from './components/common/ProtectedRoute'; // Import Prote
 import SearchPage from './pages/SearchPage'; // Import SearchPage component
 import { setLoggedIn } from './store/slices/cartSlice';
 import { useDispatch } from 'react-redux';
+import ResetPass from './pages/ResetPass';
+import ForgotPass from './pages/ForgotPass';
+
+
+
+
+
 export const axiosInstance = axios.create({
   baseURL: 'https://api.example.com',
   timeout: 5000,
@@ -64,6 +71,8 @@ const App = () => {
           <Route path="/all-categories" element={<AllCategories />} />
           <Route path="/checkout" element={<CheckOut />} />
           <Route path="/search" element={<SearchPage />} />
+          <Route path= "/forgot-password" element={<ForgotPass />} />
+          <Route path="/reset-password/:token" element={<ResetPass />}  />
           <Route
             path="/admin"
             element={
