@@ -23,6 +23,7 @@ import { setLoggedIn } from './store/slices/cartSlice';
 import { useDispatch } from 'react-redux';
 import ResetPass from './pages/ResetPass';
 import ForgotPass from './pages/ForgotPass';
+import CategorySideBar from './components/CategorySideBar';
 
 
 
@@ -61,17 +62,18 @@ const App = () => {
 
       <div className={`content ${isSidebarOpen ? 'shifted' : ''}`}>
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route path="/" element={<CategorySideBar Component={Home}/>} />
+          {/* <Route path="/" element={<Home />} /> */}
           <Route path="/fetch-user-data" element={<FetchUserData />} />
-          <Route path="/create-account" element={<SignUp />} />
-          <Route path="/SignIn" element={<SignIn />} />
+          <Route path="/create-account" element={<CategorySideBar Component={SignUp} />} />
+          <Route path="/SignIn" element={<CategorySideBar Component={SignIn} />} />
           <Route path="/FullCartView" element={<FullCartView />} />
           <Route path="/category/:category" element={<CategoryDisplay />} />
           <Route path="/product/:productId" element={<ProductDetailPage />} />
           <Route path="/all-categories" element={<AllCategories />} />
           <Route path="/checkout" element={<CheckOut />} />
           <Route path="/search" element={<SearchPage />} />
-          <Route path= "/forgot-password" element={<ForgotPass />} />
+          <Route path= "/forgot-password" element={<ForgotPass/>} />
           <Route path="/reset-password/:token" element={<ResetPass />}  />
           <Route
             path="/admin"

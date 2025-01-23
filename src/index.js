@@ -6,6 +6,8 @@ import { store, persistor } from './store/store';
 import { Provider } from 'react-redux';
 import { createRoot } from 'react-dom/client';
 import { PersistGate } from 'redux-persist/integration/react';
+import CategorySideBar from './components/CategorySideBar';
+
 
 // Clear local storage before creating the Redux store
 localStorage.clear();
@@ -17,6 +19,7 @@ root.render(
   <Provider store={store}>
     <PersistGate loading={null} persistor={persistor}>
       <BrowserRouter>
+        {/* <CategorySideBar /> */}
         <App />
       </BrowserRouter>
     </PersistGate>
