@@ -7,6 +7,7 @@ import AddToCartPopUp from '../components/common/AddToCartPopUp'; // Import AddT
 import { Dropdown, Space } from 'antd'; // Import Ant Design components
 import { DownOutlined } from '@ant-design/icons'; // Import Ant Design icons
 import axios from 'axios'; // Import axios
+import Carousel from '../components/Carousel'; // Import Carousel component
 
 const api = axios.create({
   baseURL: 'https://dummyjson.com', // Set the base URL for the API
@@ -31,6 +32,7 @@ export default function FullCartView() {
 
     return (
         <div>
+            <Carousel /> 
             <DisplayProduct posts={posts} onAddToCart={handleAddToCart} />
         </div>
     );

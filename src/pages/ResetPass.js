@@ -17,10 +17,10 @@ export default function ResetPass() {
       const response = await axios.post(`http://localhost:8000/api/passwordResetConfirm/${token}/`, {
         new_password: values.new_password,
       });
-      messageApi.success(response.data.detail);
+      messageApi.success(response.data.detail||'Password reset successful!');
       console.log('Success:', response);
     } catch (error) {
-      messageApi.error(error.response.data.detail);
+      messageApi.error(error.response.data.detail||'Failed to reset password.');
       console.log('Failed:', error);
     }
   };
