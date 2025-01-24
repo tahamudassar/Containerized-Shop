@@ -26,7 +26,7 @@ const Navbar = ({ toggleSidebar, handleLogout }) => {
       <div className="navbar-logo">
         <img src={MainLogo} alt="logo" onClick={() => navigate('/')} />
       </div>
-      <CategoryDropdown /> {/* Use CategoryDropdown component */}
+      {/* <CategoryDropdown /> Use CategoryDropdown component */}
       <ul className="navbar-links">
         <li>
           <Link to="/">Home</Link>

@@ -23,7 +23,7 @@ export default function SignIn() {
         setResponse('Login successful!');
         localStorage.setItem('Accesstoken', data.access);
         dispatch(setLoggedIn(true)); // Set loggedIn to true
-        navigate('/'); // Redirect to homepage
+        navigate(0); // Reload the page to rerender the CategorySideBar component
       } else {
         const errorData = await response.json();
         setResponse(`Failed: ${errorData.detail || 'Unknown error'}`);

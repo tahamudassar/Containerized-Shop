@@ -10,7 +10,7 @@ import CategorySideBar from './components/CategorySideBar';
 
 
 // Clear local storage before creating the Redux store
-localStorage.clear();
+// localStorage.clear();
 
 const container = document.getElementById('root');
 const root = createRoot(container);

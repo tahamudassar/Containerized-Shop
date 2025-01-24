@@ -7,8 +7,6 @@ import SignIn from './pages/SignIn';
 import ProtectedPage from './pages/ProtectedPage';
 import FullCartView from './pages/FullCartView';
 import Home from './pages/Home';
-import Sidebar from './components/common/Sidebar'; // Import Sidebar component
-import Navbar from './components/common/Navbar'; // Import Navbar component
 import CategoryDisplay from './pages/CategoryDisplay'; 
 import AllCategories from './pages/AllCategories';
 import ProductDetailPage from './pages/ProductDetailPage';
@@ -24,10 +22,7 @@ import { useDispatch } from 'react-redux';
 import ResetPass from './pages/ResetPass';
 import ForgotPass from './pages/ForgotPass';
 import CategorySideBar from './components/CategorySideBar';
-
-
-
-
+import Sidebar from './components/common/Sidebar'; // Import Sidebar component
 
 export const axiosInstance = axios.create({
   baseURL: 'https://api.example.com',
@@ -42,10 +37,9 @@ const App = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const dispatch = useDispatch();
-  // const cartItems = useSelector((state) => state.cart); // Cart items from Redux store
 
   const handleLogout = () => {
-    localStorage.removeItem('Accesstoken');
+    localStorage.removeItem('Accesstoken'); // This line deletes the Accesstoken from browser memory
     dispatch(setLoggedIn(false));
     setIsAuthenticated(false);
   };
@@ -55,26 +49,22 @@ const App = () => {
   };
 
   return (
-    <div className="app">
-      <Navbar toggleSidebar={toggleSidebar} handleLogout={handleLogout} />
-
+    <>
       <Sidebar isOpen={isSidebarOpen} toggleSidebar={toggleSidebar} />
-
-      <div className={`content ${isSidebarOpen ? 'shifted' : ''}`}>
+      <CategorySideBar Component={() => (
         <Routes>
-          <Route path="/" element={<CategorySideBar Component={Home}/>} />
-          {/* <Route path="/" element={<Home />} /> */}
+          <Route path="/" element={<Home />} />
           <Route path="/fetch-user-data" element={<FetchUserData />} />
-          <Route path="/create-account" element={<CategorySideBar Component={SignUp} />} />
-          <Route path="/SignIn" element={<CategorySideBar Component={SignIn} />} />
+          <Route path="/create-account" element={<SignUp />} />
+          <Route path="/SignIn" element={<SignIn />} />
           <Route path="/FullCartView" element={<FullCartView />} />
           <Route path="/category/:category" element={<CategoryDisplay />} />
           <Route path="/product/:productId" element={<ProductDetailPage />} />
           <Route path="/all-categories" element={<AllCategories />} />
           <Route path="/checkout" element={<CheckOut />} />
           <Route path="/search" element={<SearchPage />} />
-          <Route path= "/forgot-password" element={<ForgotPass/>} />
-          <Route path="/reset-password/:token" element={<ResetPass />}  />
+          <Route path="/forgot-password" element={<ForgotPass />} />
+          <Route path="/reset-password/:token" element={<ResetPass />} />
           <Route
             path="/admin"
             element={
@@ -93,8 +83,8 @@ const App = () => {
             }
           />
         </Routes>
-      </div>
-    </div>
+      )} toggleSidebar={toggleSidebar} />
+    </>
   );
 };
 
