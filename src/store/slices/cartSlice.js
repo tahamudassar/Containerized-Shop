@@ -13,6 +13,7 @@ const cartSlice = createSlice({
   initialState,
   reducers: {
     addToCart: (state, action) => {
+      console.log("this is action",action); 
       state.items.push(action.payload); // Add new item directly to the items array
       state.itemCount += 1; // Increment item count
       state.total = parseFloat((state.total + action.payload.price).toFixed(2)); // Add item price to total and round to 2 decimal places

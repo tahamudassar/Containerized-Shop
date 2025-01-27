@@ -2,12 +2,21 @@
 import React from 'react';
 import '../styles/DisplayProduct.css';  // Import the CSS file for styling
 import { useNavigate } from 'react-router-dom';
+import { Button, message } from 'antd'; // Import Button and message from antd
 
 export default function DisplayProduct({ posts, onAddToCart }) {
   const navigate = useNavigate();
+  const [messageApi, contextHolder] = message.useMessage(); // Use message API from antd
+
+  const handleAddToCart = (post, e) => {
+    e.stopPropagation();
+    onAddToCart(post);
+    messageApi.open( {type:'success',content: 'Added to cart',}); // Display "Added to cart" message
+  };
 
   return (
     <div className="posts-container">
+      {contextHolder} {/* Context holder for message */}
       {posts.length > 0 ? (
         <div className="posts-grid">
           {posts.map((post) => (
@@ -20,15 +29,12 @@ export default function DisplayProduct({ posts, onAddToCart }) {
               <h3 className="post-title">{post.title}</h3>
               <p className="post-description">{post.description}</p>
               <p className="post-price">${post.price.toFixed(2)}</p>
-              <button 
+              <Button 
                 className="add-to-cart-btn" 
-                onClick={(e) => {
-                  e.stopPropagation();
-                  onAddToCart(post);
-                }}
+                onClick={(e) => handleAddToCart(post, e)}
               >
                 Add to Cart
-              </button>
+              </Button>
             </div>
           ))}
         </div>

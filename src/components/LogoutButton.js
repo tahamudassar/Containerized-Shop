@@ -1,6 +1,7 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { logout } from '../store/slices/cartSlice';
+import { Button } from 'antd';
+import { logout } from '../store/slices/cartSlice'; // Adjust the import path as necessary
 
 const LogoutButton = () => {
   const dispatch = useDispatch();
@@ -13,9 +14,9 @@ const LogoutButton = () => {
 
   return (
     loggedIn && (
-      <button onClick={handleLogout}>
+      <Button color="red" variant='filled' type="primary" onClick={handleLogout}>
         Logout
-      </button>
+      </Button>
     )
   );
 };

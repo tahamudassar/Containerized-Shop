@@ -4,6 +4,7 @@ import { resetCart, removeFromCart, decreaseQuantity, addToCart } from '../../st
 import '../../styles/Sidebar.css';
 import CartItemButtons from './CartItemButtons';
 import { useNavigate } from 'react-router-dom';
+import { Button, Drawer } from 'antd';
 
 const Sidebar = ({ isOpen, toggleSidebar }) => {
   const cartItems = useSelector((state) => state.cart.items);
@@ -35,8 +36,12 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
   const itemsArray = Object.values(groupedItems);
 
   return (
-    <div className={`sidebar ${isOpen ? 'open' : ''}`}>
-      <h2>Cart Items</h2>
+    <Drawer
+      title="Cart Items"
+      placement="right"
+      onClose={toggleSidebar}
+      open={isOpen}
+    >
       {itemsArray.length > 0 ? (
         <ul className="cart-items">
           {itemsArray.map((item, index) => (
@@ -57,11 +62,11 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
       )}
 
       <div className="sidebar-buttons">
-        <button className="close-sidebar" onClick={() => navigate('checkout')}>Checkout</button>
-        <button className="close-sidebar" onClick={handleClearCart}>Clear Cart</button>
-        <button className="close-sidebar" onClick={toggleSidebar}>Close</button>
+        <Button type="primary" onClick={() => navigate('checkout')}>Checkout</Button>
+        <Button onClick={handleClearCart}>Clear Cart</Button>
+        <Button onClick={toggleSidebar}>Close</Button>
       </div>
-    </div>
+    </Drawer>
   );
 };
 
