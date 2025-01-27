@@ -60,11 +60,14 @@ const cartSlice = createSlice({
 
       state.loggedIn = action.payload; // Set loggedIn state
     },
+    logout: (state) => {
+      cartSlice.caseReducers.setLoggedIn(state, { payload: false }); // Use setLoggedIn to set loggedIn to false
+    },
   },
 });
 
 // Export actions
-export const { addToCart, removeFromCart, resetCart, decreaseQuantity, setLoggedIn } = cartSlice.actions;
+export const { addToCart, removeFromCart, resetCart, decreaseQuantity, setLoggedIn, logout } = cartSlice.actions;
 
 // Export the reducer
 export default cartSlice.reducer;

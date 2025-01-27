@@ -12,6 +12,7 @@ const UserData = () => {
   // State for handling form input
   const [inputUserID, setInputUserID] = useState(formData.userID);
 
+  const [error, setError] = useState(null);
   // useEffect that runs when formData.userID changes
   useEffect(() => {
     console.log("Fetching new user data...");
@@ -25,8 +26,10 @@ const UserData = () => {
         }
         const data = await response.json();
         setUser(data); // Set the user data in state
+        setError(null); // Clear any previous errors
       } catch (error) {
         console.error("Error fetching user data:", error);
+        setError(error.statusText); // Set error in state
         setUser(null); // Clear user data on error
       }
     };
@@ -64,7 +67,7 @@ const UserData = () => {
           <p>Email: {user.email}</p>
         </div>
       ) : (
-        <p>Loading user data...</p>
+        <p>{error ? `Error: ${error}` : 'No user data available'}</p>
       )}
     </div>
   );
