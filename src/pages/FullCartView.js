@@ -18,8 +18,8 @@ const FullCartView = () => {
     dispatch(removeFromCart({ id: id, forceZeroQuantity: true })); // Remove item completely
   };
 
-  const handleIncreaseQuantity = (id) => {
-    dispatch(addToCart({ id: id }));
+  const handleIncreaseQuantity = (item) => {
+    dispatch(addToCart(item));
   };
 
   const handleCheckout = () => {
@@ -55,7 +55,7 @@ const FullCartView = () => {
               <p>Price: ${item.price}</p>
               <p>Quantity: {item.quantity}</p>
               <button onClick={() => handleDecreaseQuantity(item.id)}>-</button>
-              <button onClick={() => handleIncreaseQuantity(item.id)}>+</button>
+              <button onClick={() => handleIncreaseQuantity(item)}>+</button>
               <button onClick={() => handleRemoveItem(item.id)}>Remove Item</button>
             </div>
           </div>
