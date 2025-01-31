@@ -16,7 +16,8 @@ export default function SignIn() {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(values)
+        body: JSON.stringify(values),
+        credentials: 'include',  // Include credentials in the request
       });
       if (response.status === 200) {
         const data = await response.json(); // Parse the server response if needed
@@ -26,7 +27,7 @@ export default function SignIn() {
         navigate('/'); // Redirect to the home page
       } else {
         const errorData = await response.json();
-        setResponse(`Failed: ${errorData.detail || 'Unknown error'}`);
+        setResponse(`Failed: ${errorData.non_field_errors || 'Unknown error'}`);
         console.log('Error', errorData);
       }
     } catch (error) {
@@ -98,8 +99,6 @@ export default function SignIn() {
           </Button>
         </Form.Item>
       </Form>
-
-
 
       {response && <p>{response}</p>} {/* Display server or validation messages */}
     </div>

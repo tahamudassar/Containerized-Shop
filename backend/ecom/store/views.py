@@ -32,6 +32,7 @@ class CustomTokenObtainPairSerializer(serializers.Serializer):
                 data = {
                     'refresh': str(refresh),
                     'access': str(refresh.access_token),
+                    'group': user.groups.first().name if user.groups.exists() else None,  # Include user's group
                 }
                 return data
             else:
