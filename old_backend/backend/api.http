@@ -25,7 +25,8 @@ Content-Type: application/json
 {
     "email": "temps@temp.com",
     "username": "abuuasdasau",
-    "password": "123456789012"
+    "password": "123456789012",
+    "phone" : "1234567890"
 }
 
 ###

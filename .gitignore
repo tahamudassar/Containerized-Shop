@@ -1,1 +1,8 @@
 node_modules
+backend/ecom/db.sqlite3
+/backend/ecom/ecom/__pycache__
+/backend/ecom/store/__pycache__
+*.pyc
+*.pyc
+*.Identifier
+*.pyc

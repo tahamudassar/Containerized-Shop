@@ -10,6 +10,7 @@ export default function Form() {
         email: '',
         password: '',
         reenter_password: '',
+        phone: '', // Add phone field
     });
     const [response, setResponse] = useState(null); // Store server response status or messages
     const [messageApi, contextHolder] = message.useMessage(); // Initialize Ant Design message API
