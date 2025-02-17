@@ -6,3 +6,7 @@ backend/ecom/db.sqlite3
 *.pyc
 *.Identifier
 *.pyc
+*.pyc
+*.pyc
+*.pyc
+/old_backend/backend/api/__pycache__
