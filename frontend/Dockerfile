@@ -13,11 +13,18 @@ COPY package*.json ./
 # Install dependencies
 RUN npm install
 
-# Copy the rest of your application files
-COPY . .
+# Copy the rest of your application files (public and src should be included here)
+COPY ./public ./public
+COPY ./src ./src
+
+# Build the app for production
+RUN npm run build
+
+# Install serve globally to serve the build
+RUN npm install -g serve
 
 # Expose the port your app runs on
 EXPOSE 3000
 
-# Define the command to run your app
-CMD ["sh", "-c", "BROWSER=none npm start"]
+# Define the command to serve the built app
+CMD ["serve", "-s", "build", "-l", "3000"]

@@ -10,3 +10,7 @@ backend/ecom/db.sqlite3
 *.pyc
 *.pyc
 /old_backend/backend/api/__pycache__
+*.pyc
+/backend/ecom/store/__pycache__
+/backend/ecom/store/migrations/__pycache__
+*.pyc

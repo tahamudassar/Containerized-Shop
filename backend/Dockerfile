@@ -13,9 +13,8 @@ WORKDIR /usr/src/app
 # Copy requirements.txt
 COPY requirements.txt ./  
 
-# Install dependencies
-RUN pip install --no-cache-dir -r requirements.txt \
-    && pip install django-cors-headers  
+# Install dependencies 
+RUN pip install --no-cache-dir -r requirements.txt 
 
 # Copy the rest of the backend code
 COPY . .  
